@@ -61,7 +61,6 @@ $(OBJ)/%.o: %.c
 # Commands
 clean:
 	@rm -rf $(BUILD)
-	@rm -rf compile_commands.json
 
 debug:
 	$(MAKE) CONFIG=Debug
