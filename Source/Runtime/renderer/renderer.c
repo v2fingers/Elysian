@@ -11,7 +11,7 @@ b8 renderer_init(Platform* platform) {
 	renderer_backend_create(RENDERER_BACKEND_TYPE_VULKAN, backend);
 
 	if (!backend->init(platform)) {
-		LOG_FATAL("Renderer backend failed to initialize. Shutting down.");
+		LOG_FATAL("Failed to init renderer backend");
 		return FALSE;
 	}
 
@@ -36,7 +36,7 @@ b8 renderer_drawframe(RenderPacket* packet) {
 	if (renderer_begin_frame(packet)) {
 
 		if (!renderer_end_frame()) {
-			LOG_ERROR("renderer_end_frame failed. Application shutting down");
+			LOG_ERROR("renderer_end_frame failed");
 			return FALSE;
 		}
 	}
