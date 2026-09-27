@@ -15,7 +15,7 @@ void mem_shutdown(void) {
 }
 
 void mem_free(void* chunk, u64 size) {
-	LOG_INFO("Memory Free:  %p (%llu bytes)", chunk, size);
+	LOG_INFO("Memory: freed %llu bytes from address: %p", size, chunk);
 	stats.total_allocated -= size;
 	platform_free(chunk, FALSE);
 }
@@ -27,7 +27,7 @@ void* mem_alloc(u64 size) {
 	}
 
 	stats.total_allocated += size;
-	LOG_INFO("Memory Allocated: %p (%llu bytes)", chunk, size);
+	LOG_INFO("Memory: allocated %llu bytes at address: %p", size, chunk);
 
 	mem_zero(chunk, size);
 	return chunk;
@@ -56,7 +56,7 @@ void* mem_calloc(u64 count, u64 size) {
 	}
 
 	stats.total_allocated += total;
-	LOG_INFO("Memory Allocated: %p (%llu bytes)", chunk, total);
+	LOG_INFO("Memory: allocated %llu bytes at address: %p", total, chunk);
 	platform_zero_memory(chunk, total);
 
 	return chunk;
