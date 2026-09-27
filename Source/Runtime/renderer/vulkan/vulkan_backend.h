@@ -7,5 +7,7 @@
 b8 vulkan_backend_init(Platform* platform);
 void vulkan_backend_shutdown(void);
 
+static b8 init_vma(void);
+
 b8 vulkan_backend_begin_frame(RenderPacket* packet);
 b8 vulkan_backend_end_frame(void);
